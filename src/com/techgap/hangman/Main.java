@@ -88,15 +88,26 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Main main = new Main();
-		main.selectWord();
 		
-		boolean solved = false;
-		int attempt = 0;
-		
-		while(!solved && attempt++ < main.getMaximumAttempts()) {
-			System.out.println("Attempt " + attempt + ":");
-			solved = main.waitForInput();
-			System.out.println();
+		while(true) {
+			main.selectWord();
+			
+			boolean solved = false;
+			int attempt = 0;
+			
+			while(!solved && attempt++ < main.getMaximumAttempts()) {
+				System.out.println("Attempt " + attempt + ":");
+				solved = main.waitForInput();
+				System.out.println();
+			}
+			
+			System.out.print("Wan't to continue? (yes/no): ");
+			Scanner keyboard = new Scanner(System.in);
+			String toContinue = keyboard.next();
+			
+			if("no".equals(toContinue)) {
+				break;
+			}
 		}
 	}
 }
